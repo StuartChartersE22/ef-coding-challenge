@@ -17,6 +17,7 @@ class Analyser extends Component {
   handleFileLoading(file){
     const fileReader = new FileReader();
     fileReader.onload = () => {
+      // The json object is just an array of reviews. If json object more complex, add formatting here
       const phrases = JSON.parse(fileReader.result)
       this.setState({
         phrases: phrases,
