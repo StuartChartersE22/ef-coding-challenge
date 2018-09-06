@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from '../components/NavBar.js';
 import FrequencyTable from '../components/FrequencyTable.js';
+import ReviewAnalyser from '../models/ReviewAnalyser.js';
 
 class Analyser extends Component {
   constructor(props) {
@@ -27,15 +28,17 @@ class Analyser extends Component {
         "Did not notice any difference",
         "Horrible taste",
         "Does its job and shows it works"
-      ]
+      ],
+      WordFrequencies: {}
     };
+    this.state.WordFrequencies = ReviewAnalyser.getWordFrequencies(this.state.phrases)
   }
 
   render(){
     return (
       <div>
         <NavBar/>
-        <FrequencyTable phrases={this.state.phrases}/>
+        <FrequencyTable words={this.state.WordFrequencies}/>
       </div>
     );
   }
