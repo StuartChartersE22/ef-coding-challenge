@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-class NavBar extends Component {
-  constructor() {
+const NavBar = (props) => {
+  return (
+    <p>I am a nav bar</p>
+  );
+};
 
-  }
-}
+export default NavBar;

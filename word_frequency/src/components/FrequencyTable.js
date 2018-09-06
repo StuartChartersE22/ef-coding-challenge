@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-class FrequencyTable extends Component {
-  constructor() {
+const FrequencyTable = (props) => {
+  return (
+    <p>I am the freq table</p>
+  );
+};
 
-  }
-}
+export default FrequencyTable;
