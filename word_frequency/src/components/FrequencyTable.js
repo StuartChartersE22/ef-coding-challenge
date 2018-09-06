@@ -1,14 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const FrequencyTable = (props) => {
 
   const words = getWordFrequencies(props.phrases)
-  console.log(words);
+  const tableRows = Object.keys(words).map((word, index) => {
+    if(!word) return;
+    return (
+      <tr key={index} className="word-frequency">
+        <td className="word">
+          {word}
+        </td>
+        <td className="frequency">
+          {words[word]}
+        </td>
+      </tr>
+    );
+  })
 
   return (
     <table id="freq-table">
       <tbody>
-
+        {tableRows}
       </tbody>
     </table>
   );
@@ -33,7 +45,12 @@ function getWordFrequencies(phrases) {
 
 function sanitiseWord(word) {
   word = word.toLowerCase();
+
+  // remove all punctuation from end
   word = word.replace(/\W*$/, '')
-  word = word.replace(/\d*/, '')
+
+  // remove all numbers from end
+  word = word.replace(/\d*$/, '')
+
   return word;
 }
