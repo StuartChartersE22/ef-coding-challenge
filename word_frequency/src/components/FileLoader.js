@@ -12,8 +12,8 @@ class FileLoader extends Component {
   }
 
   handleFileSelection(evt){
-    const file = this.fileInput.current.files[0]
-    console.log(file);
+    const file = this.fileInput.current.files[0];
+    this.state.file = file
   }
 
   handleFileLoading(){
