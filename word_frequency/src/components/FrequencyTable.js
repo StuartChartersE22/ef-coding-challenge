@@ -18,9 +18,9 @@ export default FrequencyTable;
 
 function getWordFrequencies(phrases) {
   return phrases.reduce((words, phrase) => {
-    console.log(phrase);
     const phraseArray = phrase.split(' ')
     phraseArray.forEach((word) => {
+      word = sanitiseWord(word);
       if (words[word]){
         words[word] += 1
       }else{
@@ -29,4 +29,11 @@ function getWordFrequencies(phrases) {
     });
     return words;
   }, {});
+}
+
+function sanitiseWord(word) {
+  word = word.toLowerCase();
+  word = word.replace(/\W*$/, '')
+  word = word.replace(/\d*/, '')
+  return word;
 }
