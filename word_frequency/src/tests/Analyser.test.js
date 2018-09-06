@@ -7,3 +7,9 @@ it('renders without crashing', () => {
   ReactDOM.render(<Analyser/>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+it('has a state of phrases', () => {
+  const analyser = new Analyser();
+  const result = analyser.state.phrases.length
+  expect(result).toBe(20)
+})
