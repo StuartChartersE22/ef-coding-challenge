@@ -1,10 +1,10 @@
+import '../style/FrequencyTable.css'
 import React from 'react';
 
 const FrequencyTable = (props) => {
 
   const words = getWordFrequencies(props.phrases)
   const tableRows = Object.keys(words).map((word, index) => {
-    if(!word) return;
     return (
       <tr key={index} className="word-frequency">
         <td className="word">
@@ -19,6 +19,12 @@ const FrequencyTable = (props) => {
 
   return (
     <table id="freq-table">
+      <thead>
+        <tr>
+          <th>Word</th>
+          <th>Frequency</th>
+        </tr>
+      </thead>
       <tbody>
         {tableRows}
       </tbody>
@@ -33,6 +39,7 @@ function getWordFrequencies(phrases) {
     const phraseArray = phrase.split(' ')
     phraseArray.forEach((word) => {
       word = sanitiseWord(word);
+      if(!word) return words;
       if (words[word]){
         words[word] += 1
       }else{

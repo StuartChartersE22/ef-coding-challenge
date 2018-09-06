@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './style/App.css';
 import Analyser from './containers/Analyser.js';
 
 class App extends Component {
