@@ -9,7 +9,7 @@ class Analyser extends Component {
     super(props)
     this.state = {
       phrases: [],
-      WordFrequencies: {}
+      wordFrequencies: {}
     };
     this.handleFileLoading = this.handleFileLoading.bind(this);
   }
@@ -17,10 +17,13 @@ class Analyser extends Component {
   handleFileLoading(file){
     const fileReader = new FileReader();
     fileReader.onload = () => {
-      console.log(fileReader.result);
-    }
+      const phrases = JSON.parse(fileReader.result)
+      this.setState({
+        phrases: phrases,
+        wordFrequencies: ReviewAnalyser.getWordFrequencies(phrases)
+      });
+    };
     fileReader.readAsText(file);
-    // this.state.WordFrequencies = ReviewAnalyser.getWordFrequencies()
   }
 
   render(){
@@ -28,7 +31,7 @@ class Analyser extends Component {
       <div>
         <NavBar/>
         <FileLoader onLoading={this.handleFileLoading}/>
-        <FrequencyTable words={this.state.WordFrequencies}/>
+        <FrequencyTable words={this.state.wordFrequencies}/>
       </div>
     );
   }

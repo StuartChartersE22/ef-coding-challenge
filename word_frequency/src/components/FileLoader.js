@@ -13,7 +13,7 @@ class FileLoader extends Component {
 
   handleFileSelection(evt){
     const file = this.fileInput.current.files[0];
-    this.state.file = file
+    this.setState({file: file});
   }
 
   handleFileLoading(){
