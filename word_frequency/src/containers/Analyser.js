@@ -15,6 +15,7 @@ class Analyser extends Component {
   }
 
   handleFileLoading(file){
+    console.log(file);
     this.state.WordFrequencies = ReviewAnalyser.getWordFrequencies()
   }
 
