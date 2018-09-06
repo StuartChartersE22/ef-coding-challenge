@@ -4,7 +4,8 @@ import React from 'react';
 const FrequencyTable = (props) => {
 
   const words = getWordFrequencies(props.phrases)
-  const tableRows = Object.keys(words).map((word, index) => {
+  const sortedWords = sortWords(words)
+  const tableRows = sortedWords.map((word, index) => {
     return (
       <tr key={index} className="word-frequency">
         <td className="word">
@@ -60,4 +61,8 @@ function sanitiseWord(word) {
   word = word.replace(/\d*$/, '')
 
   return word;
+}
+
+function sortWords(words) {
+  return Object.keys(words).sort((word1, word2) => words[word2] - words[word1]);
 }
