@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 import NavBar from '../components/NavBar.js';
 import FrequencyTable from '../components/FrequencyTable.js';
 import FileLoader from '../components/FileLoader.js';
+import WordCloud from '../components/WordCloud.js';
 import ReviewAnalyser from '../models/ReviewAnalyser.js';
 
 class Analyser extends Component {
@@ -23,11 +26,23 @@ class Analyser extends Component {
 
   render(){
     return (
-      <div>
-        <NavBar/>
-        <FileLoader onLoading={this.handleFileLoading}/>
-        <FrequencyTable words={this.state.wordFrequencies}/>
-      </div>
+      <Router>
+        <React.Fragment>
+          <NavBar/>
+          <Route
+            exact path="/"
+            render={() => {<FileLoader onLoading={this.handleFileLoading}/>}}
+          />
+          <Route
+            path="/freq-table"
+            render={() => {<FrequencyTable words={this.state.wordFrequencies}/>}}
+          />
+          <Route
+            path="/word-cloud"
+            render={() => <WordCloud words={this.state.wordFrequencies}/>}
+          />
+        </React.Fragment>
+      </Router>
     );
   }
 }
