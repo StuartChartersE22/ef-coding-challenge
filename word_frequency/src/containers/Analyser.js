@@ -18,10 +18,10 @@ class Analyser extends Component {
   }
 
   handleFileLoading(phrases){
-      this.setState({
-        phrases: phrases,
-        wordFrequencies: ReviewAnalyser.getWordFrequencies(phrases)
-      });
+    this.setState({
+      phrases: phrases,
+      wordFrequencies: ReviewAnalyser.getWordFrequencies(phrases)
+    });
   }
 
   render(){
@@ -31,11 +31,11 @@ class Analyser extends Component {
           <NavBar/>
           <Route
             exact path="/"
-            render={() => {<FileLoader onLoading={this.handleFileLoading}/>}}
+            render={() => <FileLoader onLoading={this.handleFileLoading}/>}
           />
           <Route
             path="/freq-table"
-            render={() => {<FrequencyTable words={this.state.wordFrequencies}/>}}
+            render={() => <FrequencyTable words={this.state.wordFrequencies}/>}
           />
           <Route
             path="/word-cloud"
