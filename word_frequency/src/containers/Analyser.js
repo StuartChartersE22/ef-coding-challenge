@@ -11,8 +11,13 @@ class Analyser extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      phrases: [],
-      wordFrequencies: {}
+      phrases: ['Please upload a file'],
+      wordFrequencies: {
+        Please: 1,
+        upload: 1,
+        a: 1,
+        file: 1
+      }
     };
     this.handleFileLoading = this.handleFileLoading.bind(this);
   }
