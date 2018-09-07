@@ -14,17 +14,11 @@ class Analyser extends Component {
     this.handleFileLoading = this.handleFileLoading.bind(this);
   }
 
-  handleFileLoading(file){
-    const fileReader = new FileReader();
-    fileReader.onload = () => {
-      // The json object is just an array of reviews. If json object more complex, add formatting here
-      const phrases = JSON.parse(fileReader.result)
+  handleFileLoading(phrases){
       this.setState({
         phrases: phrases,
         wordFrequencies: ReviewAnalyser.getWordFrequencies(phrases)
       });
-    };
-    fileReader.readAsText(file);
   }
 
   render(){
